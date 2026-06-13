@@ -4,10 +4,13 @@ import * as authService from '../services/auth';
 const TOKEN_KEY = 'samolyet_token';
 const USER_KEY = 'samolyet_user';
 
+export type UserGoal = 'serious' | 'friendship' | 'casual';
+
 export interface AuthUser {
   id: string;
   username: string;
   displayName: string;
+  goal: UserGoal | null;
 }
 
 interface AuthState {
@@ -21,6 +24,7 @@ interface AuthState {
   register: (username: string, displayName: string, password: string) => Promise<void>;
   logout: () => void;
   clearError: () => void;
+  updateGoal: (goal: UserGoal) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -36,7 +40,13 @@ export const useAuthStore = create<AuthState>((set) => ({
     if (!token || !userRaw) return;
 
     try {
-      const user = JSON.parse(userRaw) as AuthUser;
+      const parsed = JSON.parse(userRaw) as Partial<AuthUser>;
+      const user: AuthUser = {
+        id: parsed.id!,
+        username: parsed.username!,
+        displayName: parsed.displayName!,
+        goal: parsed.goal ?? null,
+      };
       set({ token, user });
     } catch {
       localStorage.removeItem(TOKEN_KEY);
@@ -50,12 +60,14 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = await authService.login({ username, password });
 
+      const user: AuthUser = { ...response.user, goal: null };
+
       localStorage.setItem(TOKEN_KEY, response.token);
-      localStorage.setItem(USER_KEY, JSON.stringify(response.user));
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
 
       set({
         token: response.token,
-        user: response.user,
+        user,
         isLoading: false,
         error: null,
       });
@@ -72,12 +84,14 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = await authService.register({ username, displayName, password });
 
+      const user: AuthUser = { ...response.user, goal: null };
+
       localStorage.setItem(TOKEN_KEY, response.token);
-      localStorage.setItem(USER_KEY, JSON.stringify(response.user));
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
 
       set({
         token: response.token,
-        user: response.user,
+        user,
         isLoading: false,
         error: null,
       });
@@ -96,4 +110,15 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   clearError: () => set({ error: null }),
+
+  updateGoal: (goal) => {
+    set((state) => {
+      if (!state.user) return state;
+
+      const user: AuthUser = { ...state.user, goal };
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+
+      return { user };
+    });
+  },
 }));

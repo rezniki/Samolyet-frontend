@@ -10,9 +10,13 @@ import { useAuthStore } from './store/authStore';
 
 function RootRoute() {
   const token = useAuthStore((state) => state.token);
+  const goal = useAuthStore((state) => state.user?.goal);
 
   if (token) {
-    return <HomeScreen />;
+    if (!goal) {
+      return <Navigate to="/goal-selection" replace />;
+    }
+    return <Navigate to="/home" replace />;
   }
 
   return <WelcomeScreen />;
@@ -36,6 +40,14 @@ function App() {
           element={
             <ProtectedRoute>
               <GoalSelectionScreen />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomeScreen />
             </ProtectedRoute>
           }
         />
