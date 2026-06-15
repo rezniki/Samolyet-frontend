@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 import { GoalSelectionScreen } from './pages/GoalSelectionScreen';
-import { HomeScreen } from './pages/HomeScreen';
+import { MainScreen } from './pages/MainScreen';
 import { LoginScreen } from './pages/LoginScreen';
 import { RegisterScreen } from './pages/RegisterScreen';
 import { WelcomeScreen } from './pages/WelcomeScreen';
@@ -47,7 +47,7 @@ function App() {
           path="/home"
           element={
             <ProtectedRoute>
-              <HomeScreen />
+              <MainScreen />
             </ProtectedRoute>
           }
         />
