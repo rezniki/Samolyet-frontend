@@ -18,7 +18,7 @@ export function BottomNavigation() {
   const setActiveTab = useNavigationStore((state) => state.setActiveTab);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-10 h-16 border-t border-[#E2E8F0] bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.08)]">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 h-16 border-t border-[#E2E8F0] bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.08)]">
       <div className="mx-auto flex h-full max-w-md items-center justify-around px-4">
         {TABS.map(({ id, label, icon: Icon }) => {
           const isActive = activeTab === id;

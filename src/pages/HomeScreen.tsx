@@ -30,7 +30,7 @@ export function HomeScreen() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-24">
       <header>
         <h1 className="text-3xl font-bold text-[#1E293B]">Рекомендации</h1>
         <p className="text-sm text-[#64748B]">Специально подобранные профили для тебя</p>

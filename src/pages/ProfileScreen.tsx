@@ -31,7 +31,7 @@ export function ProfileScreen() {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-24">
       <header>
         <h1 className="mb-1 text-2xl font-bold text-[#1E293B]">Профиль</h1>
         <p className="mb-6 text-sm text-[#64748B]">Настройки учётной записи</p>
