@@ -6,13 +6,15 @@ import {
   MessageCircle,
   Sparkles,
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { mockProfiles } from '../data/mockProfiles';
 import { Button } from '../components/ui/Button';
-import { useNavigationStore } from '../store/navigationStore';
+import { useChatStore } from '../store/chatStore';
 
 export function HomeScreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const setActiveTab = useNavigationStore((state) => state.setActiveTab);
+  const navigate = useNavigate();
+  const createChat = useChatStore((state) => state.createChat);
 
   const profile = mockProfiles[currentIndex];
   const totalProfiles = mockProfiles.length;
@@ -26,7 +28,8 @@ export function HomeScreen() {
   };
 
   const handleWrite = () => {
-    setActiveTab('chats');
+    createChat(profile.id, profile.name, profile.photo);
+    navigate('/chats');
   };
 
   return (
