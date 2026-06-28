@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# 🚀 Samolyet — Dating Without Swipes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A mindful dating app that shows you 3 relevant profiles per day instead of an endless feed. No swipes. No matches required. Just direct, intentional connections.
 
-Currently, two official plugins are available:
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React Native](https://img.shields.io/badge/React_Native-20232A?logo=react&logoColor=61DAFB)](https://reactnative.dev/)
+[![License](https://img.shields.io/badge/License-Private-red)]()
+[![Status](https://img.shields.io/badge/Status-MVP%20in%20progress-yellow)]()
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 💡 The Problem
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Modern dating apps are designed for **engagement, not connection**:
 
-## Expanding the ESLint configuration
+- ❌ Endless swiping leads to **decision fatigue**
+- ❌ "Match-first" mechanics create anxiety and waiting
+- ❌ Superficial profiles encourage 0.5-second judgments
+- ❌ Algorithms optimize for **time-in-app**, not real relationships
+- ❌ Users spend 2+ hours daily and feel burnt out
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Result:** People delete apps frustrated, not fulfilled.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ✨ The Solution: Samolyet
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Samolyet is a **conscious alternative** built on three principles:
+
+### 1. **Less is More**
+You receive exactly **3 curated profiles per day** based on your stated goal. No infinite scroll. No FOMO.
+
+### 2. **Direct Communication**
+No match required. If someone catches your eye, you can message them directly. No games, no waiting.
+
+### 3. **Goal-First Matching**
+Users declare their intent upfront:
+- 💍 Serious relationship
+- 🤝 Friendship  
+- ☕ Casual connections
+
+Profiles shown align with your goal — and theirs.
+
+---
+
+## 🎯 Key Features
+
+- **🎲 Daily Curated Feed** — 3 high-signal profiles tailored to your preferences
+- **💬 Direct Messaging** — Write to anyone, no mutual match gatekeeping
+- **🎯 Goal-Based Filtering** — Serious, friendship, or casual — you decide
+- **🏷️ Rich Interest Tags** — Detailed profiles with weighted interests (important vs nice-to-have)
+- **⚡ Quick Sessions** — Designed to be used in under 10 minutes/day
+- **💎 Transparent Algorithm** — Know why you're seeing each profile
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Mobile App** | React Native + TypeScript |
+| **Backend API** | Node.js + Express |
+| **Database** | MongoDB |
+| **Authentication** | (TBD — likely Firebase Auth or JWT) |
+| **Hosting** | (Frontend: app stores / Backend: Railway or Render) |
+| **Payments** | (TBD — Stripe for subscriptions) |
+
+---
+
+## 🧭 Ethical Principles
+
+Samolyet is built on a different philosophy than traditional dating apps:
+
+1. **We don't sell hope** — We sell a tool for conscious choice
+2. **User success = our success** — Even if it means they delete the app
+3. **No manipulative mechanics** — No FOMO, no fake likes, no artificial scarcity without value
+4. **Time is precious** — We optimize for meaningful outcomes, not time-in-app
+5. **Transparency over growth** — We'd rather have 1,000 happy users than 1,000,000 burnt-out ones
+
+---
+
+## 🚦 Current Status
+
+✅ Problem validation (7+ user interviews)
+✅ Product requirements document (PRD v1.0)
+✅ UI/UX wireframes
+🔄 Frontend development (in progress)
+⏳ Backend API
+⏳ Beta launch
+⏳ Public release
+
+
+---
+
+## 🚀 Getting Started (Development)
+
+> ⚠️ This is a private project. Access is limited to the maintainer.
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Run on iOS
+npm run ios
+
+# Run on Android
+npm run android
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Create a .env.local file:
+```bash
+API_URL=http://localhost:3000/api
+FIREBASE_API_KEY=your_key_here
 ```
+
+## 📚 Project Structure
+
+samolyet-frontend/
+├── src/
+│   ├── components/      # Reusable UI components
+│   ├── screens/         # App screens (Home, Profile, Chat, etc.)
+│   ├── navigation/      # React Navigation setup
+│   ├── services/        # API calls
+│   ├── hooks/           # Custom React hooks
+│   ├── store/           # State management (Zustand/Redux)
+│   ├── utils/           # Helper functions
+│   ├── types/           # TypeScript interfaces
+│   └── assets/          # Images, fonts, etc.
+├── App.tsx              # Entry point
+└── package.json
