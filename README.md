@@ -120,6 +120,7 @@ FIREBASE_API_KEY=your_key_here
 
 ## 📚 Project Structure
 
+```bash
 samolyet-frontend/
 ├── src/
 │   ├── components/      # Reusable UI components
@@ -133,3 +134,4 @@ samolyet-frontend/
 │   └── assets/          # Images, fonts, etc.
 ├── App.tsx              # Entry point
 └── package.json
+```
